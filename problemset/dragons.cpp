@@ -2,23 +2,32 @@
 
 using namespace std;
 
+// lowest strength dragon first
+// until strength is lower than dragon
 int main() {
 	int s, n, x, y;
 	cin >> s >> n;
+	
+	// strength, bonus
+	vector<pair<int, int>> dragons;
 
-	for (int i=0; i<n; i++) {
+	for (int i=0; i<n*2; i+=2) {
 		cin >> x >> y;
-		if (s > x) {
-			s +=y;
-		} else {
-			s = 0;
-			break;
+		dragons.push_back({ x, y });
+	}
+	
+	sort(dragons.begin(), dragons.end());
+
+	for(int i=0; i<dragons.size(); i++) {
+		if (s > dragons[i].first) {
+			s +=dragons[i].second;
+		}
+		else {
+			cout << "NO";
+			return 0;
 		}
 	}
 
-	if (s > 0)
-		cout << "YES";
-	else
-		cout << "NO";
+	cout << "YES";
 	return 0;
 } 
