@@ -7,12 +7,14 @@ int main() {
 	cin >> n;
 
 	int arr[n];
-	int count = 0; 
-
 	for (int i=0; i<n; i++) {
-		cin >> arr[i];
+		int ans;
+		cin >> ans;
+		if (ans) {
+			cout << "HARD";
+			return 0;
+		}
 	}
-
-	cout << count << endl;
+	cout << "EASY";
 	return 0;
 }
