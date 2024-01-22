@@ -22,13 +22,24 @@ int main() {
     
 	int T; 
     cin >> T; 
-    
+	
 	while (T--) { 
-        int N; 
-        cin >> N; 
-        ll a[N]; 
-        FOR(i, N) 
-        cin >> a[i]; 
-    } 
+        ll n, f, a, b; 
+        cin >> n >> f >> a >> b; 
+
+		ll arr[n];
+		int moment = 0;
+		FOR(i, n) {
+			cin >> arr[i];
+			f -= min((arr[i] - moment)*a, b);
+			moment = arr[i];
+		}
+			
+		if (f <= 0) {
+			cout << "NO" << endl;
+		} else
+			cout << "YES" << endl;
+	}
+
     return 0; 
 } 
