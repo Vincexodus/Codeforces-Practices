@@ -25,11 +25,23 @@ int main() {
     cin >> T; 
     
 	while (T--) { 
-        int N, count = 0; 
-        cin >> N; 
-        ll a[N]; 
-        FOR(i, N) 
-        cin >> a[i]; 
+        int n, k, e = 0, count = 1e9; 
+        cin >> n >> k;
+		int a;
+		int total = 0;
+
+		FOR(i, n) {
+			cin >> a;
+			if (a % k == 0)
+				count = 0;
+			if (a % 2 == 0)
+				e ++;
+			count = min(count, k-a%k);
+		}
+		
+		if (k==4)
+			count = min(count, max(0, 2 - e));
+
 		cout << count << endl;
     } 
     return 0; 

@@ -25,12 +25,25 @@ int main() {
     cin >> T; 
     
 	while (T--) { 
-        int N, count = 0; 
-        cin >> N; 
-        ll a[N]; 
-        FOR(i, N) 
-        cin >> a[i]; 
-		cout << count << endl;
+        int n, k; 
+        cin >> n >> k;
+		string s;
+		cin >> s;
+
+		int count = 0;
+		map<char, int> m;
+		FOR(i, s.size())
+			m[s[i]]++;
+		
+		// char with even occurence can be ignored
+		for(auto i: m)
+			if (i.second&1) count ++;
+		
+		// two diff char with odd occurence
+		if (count-1 <= k)
+			cout << "YES" << endl;
+		else
+			cout << "NO" << endl;
     } 
     return 0; 
 } 

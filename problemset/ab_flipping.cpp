@@ -15,7 +15,6 @@ typedef pair<int, int> pi;
 #define PB push_back 
 #define POB pop_back 
 #define MP make_pair 
-#define debug(a) cout << a << endl;
 
 int main() { 
     ios::sync_with_stdio(0); 
@@ -25,12 +24,18 @@ int main() {
     cin >> T; 
     
 	while (T--) { 
-        int N, count = 0; 
+        int N; 
         cin >> N; 
-        ll a[N]; 
-        FOR(i, N) 
-        cin >> a[i]; 
-		cout << count << endl;
+        string s;
+		cin >> s;
+		
+		int l = 0, r = s.size() -1;
+		
+		while (l < s.length() && s[l] == 'B')
+			l++;
+		while (r > 0 && s[r] == 'A')
+			r--;
+		cout << max(0, r-l)<< endl;
     } 
     return 0; 
 } 
