@@ -21,16 +21,25 @@ int main() {
     ios::sync_with_stdio(0); 
     cin.tie(0); 
     
-	int t; 
-	cin >> t; 
+	int T; 
+    cin >> T; 
     
-	while (t--) { 
-        ll n, count = 0; 
-        cin >> n; 
-        ll a[n]; 
-        FOR(i, n) 
-        cin >> a[i]; 
-		cout << count << endl;
+	while (T--) { 
+        int n, count = 0;
+
+        cin >> n;
+		
+		vector <ll> row(n), col(n);
+
+		for (auto& x : row) cin >> x;
+		for (auto& x : col) cin >> x;
+
+		ll mnRow = *min_element(row.begin(), row.end());
+		ll sRow = accumulate(row.begin(), row.end(), 0LL);
+		ll mnCol = *min_element(col.begin(), col.end());
+		ll sCol = accumulate(col.begin(), col.end(), 0LL);
+		ll ans = min(mnRow * n + sCol, mnCol * n + sRow);
+		cout << ans << endl;
     } 
     return 0; 
 } 

@@ -22,15 +22,16 @@ int main() {
     cin.tie(0); 
     
 	int t; 
-	cin >> t; 
+    cin >> t; 
     
 	while (t--) { 
-        ll n, count = 0; 
-        cin >> n; 
-        ll a[n]; 
-        FOR(i, n) 
-        cin >> a[i]; 
-		cout << count << endl;
+        ll n, k, x; 
+        cin >> n >> k >> x;
+
+		if (k*(k+1)/2 > x || ((n-k+1+n)*k/2 < x))
+			cout << "NO" << endl;
+		else
+			cout << "YES" << endl;
     } 
     return 0; 
 } 

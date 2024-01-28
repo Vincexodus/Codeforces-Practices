@@ -23,10 +23,8 @@ bool isValid(int i, int j) {
 int main() { 
     ios::sync_with_stdio(0); 
     cin.tie(0); 
-    
-	vector <int> v;
 	
-	char arr[111];
+	char arr[10];
 	cin >> arr >> arr+3 >> arr+6;
 	
 	string sword = "DDD";

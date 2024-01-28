@@ -21,16 +21,22 @@ int main() {
     ios::sync_with_stdio(0); 
     cin.tie(0); 
     
-	int t; 
-	cin >> t; 
-    
-	while (t--) { 
-        ll n, count = 0; 
-        cin >> n; 
-        ll a[n]; 
-        FOR(i, n) 
-        cin >> a[i]; 
-		cout << count << endl;
-    } 
+	int T; 
+    cin >> T; 
+   
+	while (T--) { 
+        int a, b, c; 
+        cin >> a >> b >> c;
+		
+		int mini = min({a, b, c});
+
+		if (a == b && b == c) {
+			cout << "YES" << endl;
+		} else if (a % mini == 0 && b % mini == 0 && c % mini == 0 && ((a/mini) + (b/mini) + (c/mini ) -3 <= 3)) {
+			cout << "YES" << endl;
+		} else
+			cout << "NO" << endl;
+		
+     } 
     return 0; 
 } 

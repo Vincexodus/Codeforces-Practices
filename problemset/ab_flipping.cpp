@@ -1,7 +1,7 @@
 #include "bits/stdc++.h" 
-
+ 
 using namespace std; 
-
+ 
 #define mod 1e9 + 7 
 #define FOR(a, c) for (int(a) = 0; (a) < (c); (a)++) 
 #define FORL(a, b, c) for (int(a) = (b); (a) <= (c); (a)++) 
@@ -15,7 +15,7 @@ typedef pair<int, int> pi;
 #define PB push_back 
 #define POB pop_back 
 #define MP make_pair 
-
+ 
 int main() { 
     ios::sync_with_stdio(0); 
     cin.tie(0); 
@@ -29,13 +29,24 @@ int main() {
         string s;
 		cin >> s;
 		
-		int l = 0, r = s.size() -1;
+		int count = 0;
+		vi arr;
+		FOR(i, N-1)	arr.PB(i);
 		
-		while (l < s.length() && s[l] == 'B')
-			l++;
-		while (r > 0 && s[r] == 'A')
-			r--;
-		cout << max(0, r-l)<< endl;
+		while (!arr.empty()) {
+			int toDelete = -1;
+			FOR(i, arr.size()) {
+				int index = arr[i];
+				if (s[index] == 'A' && s[index+1] == 'B') {
+					swap(s[index], s[index+1]);
+					toDelete = index;
+					count ++;
+					break;
+				}
+			}
+			arr.erase(find(arr.begin(), arr.end(), toDelete));
+		}
+		cout << count << endl;
     } 
     return 0; 
 } 
