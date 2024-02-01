@@ -25,11 +25,29 @@ int main() {
 	cin >> t; 
     
 	while (t--) { 
-        ll n, count = 0; 
-        cin >> n;
-		ll a[n];
-		FOR(i, n)
-			cin >> a[i];
+        ll n, p, count = 0; 
+        cin >> n >> p;
+
+		vector <pair<ll, ll>> residents(n);
+
+		FOR(i, n) cin >> residents[i].first;
+		
+		FOR(i, n) {
+			ll in;
+			cin >> in;
+			residents[i].second = min(p, in);
+		}
+
+		sort(residents.begin(), residents.end(), [](const auto &a, const auto &b) {
+			return a.second < b.second;
+		});
+
+		count = p;
+		ll rem = n-1;
+		FOR(i, n-1) {
+			count += min(residents[i].first, rem) * residents[i].second;
+			rem -= min(residents[i].first, rem);
+		}
 		cout << count << endl;
     } 
     return 0; 
